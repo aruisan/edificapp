@@ -43,14 +43,18 @@
 
 				      <div class="row">
 				      @foreach($fotos as $photo)
-				        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 card-grande">
-				          <a href="#" class="img-card">
-				            <img class="img-thumbnail img-responsive" src="{{ asset('uploads/'.$photo->ruta) }}" alt="" height="100px">
-				          </a>
-				        </div>
+				      	<div class="col-md-3 col-sm-6">            
+				            <div class="thumbnail">
+				                <div class="caption"><br><br><br><br>
+				                    <a href="{{ asset('uploads/'.$photo->ruta) }}" target="_blank" class="btn btn-warning"><i class="fa fa-eye" aria-hidden="true"></i></a>
+				                    <a href="{{ url('/imagenes/destroy/'.$photo->id) }}" class="btn btn-danger"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a>
+				                </div>
+				                <a href="" class="img-card">
+				                	<img class="img-thumbnail img-responsive" src="{{ asset('uploads/'.$photo->ruta) }}" alt="">
+				                </a>
+				            </div>
+			        	</div>
 				      @endforeach
-
-
 				      </div><br><br>
 				      <!-- /.row -->
 

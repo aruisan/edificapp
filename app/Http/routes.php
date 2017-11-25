@@ -85,7 +85,9 @@ Route::group(['middleware' => ['auth', 'especialista']], function(){
 	Route::resource('misProyectos', 'ProyectosController');
 	Route::resource('misProyectos/imagenes', 'ImagenesController');
 	Route::get('misProyectos/imagenes/create/{id}', 'ImagenesController@create');
+	Route::get('imagenes/destroy/{id}', 'ImagenesController@destroy');
 	Route::post('subirimagenes', 'ImagenesController@store');
+
 	
 
 	Route::get('misContratos', [

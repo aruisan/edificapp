@@ -52,7 +52,7 @@ class ProyectosController extends Controller
         $ingresar = new Proyectos;
         $ingresar->nombre = $request->input('nombre');
         $ingresar->descripcion = $request->input('descripcion');
-        $ingresar->detalle = $request->input('detalles');
+        $ingresar->detalle = $request->input('detalle');
         $ingresar->user_id = Auth::user()->id;
         $ingresar->save();
 
@@ -104,7 +104,8 @@ class ProyectosController extends Controller
      */
     public function edit($id)
     {
-        return "editar ".$id;
+        $datos =  Proyectos::find($id);
+        return view('proyectos.edit')->with('datos',$datos);
     }
 
     /**
@@ -116,7 +117,14 @@ class ProyectosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $salas = Proyectos::find($id);
+        $salas->nombre = $request->input('nombre');
+        $salas->descripcion = $request->input('descripcion');
+        $salas->detalle = $request->input('detalle');
+        $salas->save();
+
+        Session::flash('message','Proyecto '.$request->input('nombre').' Editado con exito');
+        return redirect('/misProyectos/'.$id);      
     }
 
     /**
@@ -127,6 +135,6 @@ class ProyectosController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

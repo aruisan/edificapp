@@ -1,4 +1,4 @@
-	<legend><h2 class="text-center">Completa Tu Cuenta Especialista</h2></legend>	
+	<legend><h2 class="text-center">Creacion de Proyectos</h2></legend>	
 		<div class="form-group">
 			{!! Form::label('nombre', 'titulo proyecto', ['for' => 'nombre'] ) !!}
 			<div class="input-group">
@@ -21,7 +21,7 @@
 				<div class="input-group-addon">
 					<span><i class="fa fa-building fa-lg" aria-hidden="true"></i></span>
 				</div>
-				<textarea rows="3" class="form-control" name="detalles">
+				<textarea rows="3" class="form-control" name="detalle">
 			</textarea>
 			</div>
 		</div>

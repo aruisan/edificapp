@@ -15,7 +15,7 @@ class UserActividad extends Migration
         Schema::create('user_actividad', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->dateTime('tiempo');
+            $table->date('tiempo');
             $table->timestamps();
             $table->integer('actividad_id')->unsigned();
             $table->foreign('actividad_id')->references('id')->on('actividad');

@@ -171,17 +171,17 @@
 					<div class="col-md-3">
 						<h5>Servicios</h5>
 						<ul class="fa-ul">
-							<li><i  class="fa-li fa fa-send"></i>Directorio de Especialistas</li>
-							<li><i  class="fa-li fa fa-send"></i>Blog</li>
-							<li><i  class="fa-li fa fa-send"></i>Galería de Ideas</li>
-							<li><i  class="fa-li fa fa-send"></i>Soluciones de Ingeniería</li>
+							<li><i  class="fa-li fa fa-address-book"></i>Directorio de Especialistas</li>
+							<li><i  class="fa-li fa fa-book"></i>Blog</li>
+							<li><i  class="fa-li fa fa-lightbulb-o"></i>Galería de Ideas</li>
+							<li><i  class="fa-li fa fa-gears"></i>Soluciones de Ingeniería</li>
 						</ul>
 					</div>
 					<div class="col-md-3">
 						<h5>Registro</h5>
 						<ul class="fa-ul">
-							<li><i  class="fa-li fa fa-send"></i>Clientes</li>
-							<li><i  class="fa-li fa fa-send"></i>Especialistas</li>			
+							<li><i  class="fa-li fa fa-credit-card"></i>Clientes</li>
+							<li><i  class="fa-li fa fa-wrench"></i>Especialistas</li>			
 						</ul>
 					</div>
 					<div class="col-md-3">
@@ -189,7 +189,7 @@
 					</div>
 					<div class="col-md-3">
 						<h5><a href="modal/modal.html" data-toggle="modal" data-target="#terminos">Términos y condiciones</a></h5>
-						<p> Este Sitio web es operado por SICAP SAS, con NIT 901.063.265-3 y Matrícula Mercantil: 980345-16 con domicilio en...</p>
+						<p><a href="modal/modal.html" data-toggle="modal" data-target="#politica">Politica de Protección de Datos</a></p>
 						
 					</div>
 				</div><!-- container piepag-->	

@@ -69,15 +69,6 @@ $(document).ready(function(){
 		trigger:'focus'
 	});	
 
-	$('.thumbnail').hover(
-        function(){
-            $(this).find('.caption').slideDown(250); //.fadeIn(250)
-        },
-        function(){
-            $(this).find('.caption').slideUp(250); //.fadeOut(205)
-        }
-    ); 
-
 	$("#example-basic").steps({
     headerTag: "h3",
     bodyTag: "fieldset",

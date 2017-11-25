@@ -93,6 +93,12 @@ class ImagenesController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $datos =  Imagenes::find($id);
+        $datos->delete();
+        /*$path = public_path().'/uploads/'.$datos->ruta;
+        \Storage::delete($path);*/
+        \Session::flash('message-error', 'se ha borrado la imagen con exito');
+        return redirect('/misProyectos/'.$datos->proyecto_id);
     }
 }

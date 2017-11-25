@@ -10,7 +10,7 @@
 		</ol>
 		<div id="resp-terminos"></div>
 		<div class="formulario container col-sm-7 col-sm-offset-3 col-md-7 col-md-offset-3">
-	    	{!! Form::open([ 'route' => 'misProyectos.store', 'method' => 'POST', 'id' => 'cotizaciones']) !!}                
+	    	{!! Form::open([ 'route' => 'misProyectos.store', 'method' => 'POST', 'id' => 'cotizaciones', 'class' => 'form sombra' ]) !!}                
 	       		<fieldset>
 		        	@include('proyectos.partials.form')
 		     		<div class="form-group">

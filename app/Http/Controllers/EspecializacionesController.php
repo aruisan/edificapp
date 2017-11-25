@@ -124,8 +124,7 @@ class EspecializacionesController extends Controller
     public function update(Request $request, $id)
     {
         $actualizar = UserActividad::find($id);
-        $actualizar->age = $request->input('age');
-        $actualizar->mes = $request->input('mes');
+        $actualizar->tiempo = $request->input('tiempo');
         $actualizar->actividad_id = $request->input('actividad');
         $actualizar->save();
 

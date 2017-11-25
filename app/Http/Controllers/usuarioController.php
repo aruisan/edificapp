@@ -31,16 +31,17 @@ class usuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function registro(Request $request)
-    { 
-        $user = User::create($request->all());
+    {
+        $ingresar = new User;
+        $ingresar->rol = $request->rol;
+        $ingresar->email = $request->email;
+        $ingresar->password = bcrypt($request->password);
+        $ingresar->save();
 
-       if(Auth::attempt(['email' => $request->email, 'password' => $request->password]))
-        {
-            Session::flash('message', 'email '.$user->email.' pasword'.$request->password);
-            return Redirect::to('misCalificaciones');
-        }
-        Session::flash('message-error', 'email '.$user->email.' pasword'.$request->password);
-        return Redirect::to('misCalificaciones');
+        Auth::login($ingresar);
+
+        return Redirect::to('dashboard');
+
     }
 
 
@@ -48,14 +49,30 @@ class usuarioController extends Controller
 
     public function login(Request $request)
     {
-      if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']]))
-        {
-            Session::flash('message', 'email '.$request->email.' pasword'.$request->password);
-            return Redirect::to('dashboard');
-        }
-        Session::flash('message-error', 'Datos son incorrectos');
+
+
+      $user = User::where('email', $request->email)->first();
+
+
+          if($user)
+          {
+            if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']]))
+            {
+                //Session::flash('message', 'email '.$request->email.' pasword'.$request->password);
+                return Redirect::to('dashboard');
+            }else{
+                Session::flash('message-error', 'clave erronea');
+                return Redirect::to('/');
+            }
+
+          }
+
+
+        Session::flash('message-error', 'Este usuario no esta registrado');
         return Redirect::to('/');
+
     }
+
 
 
 
