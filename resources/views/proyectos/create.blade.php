@@ -24,12 +24,12 @@
 @endsection
 
 @section('css')
-<link rel="stylesheet" href="/assets/trumbowyg/dist/ui/trumbowyg.min.css">
+{!! Html::style('../assets/trumbowyg/dist/ui/trumbowyg.min.css') !!}
 @stop
 
 @section('js')
-<script src="/assets/trumbowyg/dist/trumbowyg.min.js"></script>
-<script type="text/javascript" src="/assets/trumbowyg/dist/langs/es.min.js"></script>
+{!! Html::script('../assets/trumbowyg/dist/trumbowyg.min.js') !!}
+{!! Html::script('../assets/trumbowyg/dist/langs/es.min.js') !!}
 <script type="text/javascript">
 	//libreria editor texto
 	$('textarea').trumbowyg({
