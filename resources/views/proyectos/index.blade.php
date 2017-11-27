@@ -28,6 +28,7 @@
                             <img src="{{ asset('uploads/'.$foto->ruta) }}"/>
                         @endif
                     @endforeach
+                        <img src="{{ asset('uploads/docs/imagenblanco.jpg') }}"/>
                             </a>
                             <div class="card-content">
                                 <h4 class="card-title">
@@ -35,7 +36,7 @@
                                   </a>
                                 </h4>
                                 <p class="">
-                                    {{ Str::words($data->descripcion, 35) }}
+                                    {!! Str::words($data->descripcion, 35) !!}
 
                                 </p>
                             </div>

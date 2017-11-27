@@ -45,7 +45,7 @@
 								
 							</li>
 							<li>
-								<i class="fa fa-user-secret fa-2x fa-border" aria-hidden="true"></i>
+								<i class="fa fa-user fa-2x fa-border" aria-hidden="true"></i>
 								<p>Ingresar <br><small><a href="" data-toggle="modal" data-target="#login">Login</a></small></p>	
 								
 							</li>									
@@ -338,14 +338,14 @@
 		      </div>
 		      <div class="modal-body">
 		      		<div>
-	      				<a href="/auth_facebook" id="btn-facebook" class="btn btn-lg btn-block" role="button"><i class="fa fa-facebook-official" aria-hidden="true"></i>Loguearse con Facebook</a>
+	      				<a href="/auth_facebook" id="btn-facebook" class="btn btn-lg btn-block" role="button"><i class="fa fa-facebook-official" aria-hidden="true"></i>Iniciar Sesion con Facebook</a>
 	      			</div>
 
 	      			<div>
-	      				<a href="auth_google" id="btn-google" class="btn btn-lg btn-block" role="button"><i class="fa fa-google-plus" aria-hidden="true"></i>Loguearse con Google</a>
+	      				<a href="auth_google" id="btn-google" class="btn btn-lg btn-block" role="button"><i class="fa fa-google-plus" aria-hidden="true"></i>Iniciar Sesion con Google</a>
 	      			</div>
 	      			<legend>
-			    		Loguearse
+			    		Iniciar Sesion
 			    	</legend>
 		      		<form action="/login" method="POST" class="sombra form">
 		      			<input type="hidden" name="_token" value="{{ csrf_token() }}">

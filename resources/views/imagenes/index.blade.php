@@ -28,10 +28,10 @@
 
 				        <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
 				          <h3 id="titulos">Descripción del Proyecto</h3>
-				          <p class="text-justify">{{ $datos->descripcion }}</p>
+				          <p class="text-justify">{!! $datos->descripcion !!}</p>
 
 				          <h3 id="titulos">Detalles del Proyecto</h3>
-				          <p class="text-justify">{{ $datos->detalle }}</p>
+				          <p class="text-justify">{!! $datos->detalle !!}</p>
 				        </div>
 
 				      </div>

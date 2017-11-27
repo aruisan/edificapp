@@ -89,11 +89,16 @@ Route::group(['middleware' => ['auth', 'especialista']], function(){
 	Route::post('subirimagenes', 'ImagenesController@store');
 
 	
-
-	Route::get('misContratos', [
+	Route::get('misContratos', function(){
+	return view('errors.503');
+	});
+	Route::get('contratos', function(){
+	return view('errors.503');
+	});
+	/*Route::get('misContratos', [
 			'uses' 	=> 'usuarioController@misContratos',
 			'as'	=>	'misContratos'
-	]);
+	]);*/
 	Route::get('misCalificaciones', [
 			'uses' 	=> 'usuarioController@misCalificaciones',
 			'as'	=>	'misCalificaciones'

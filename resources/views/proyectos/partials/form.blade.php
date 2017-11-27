@@ -17,13 +17,8 @@
 
 		<div class="form-group">
 			{!! Form::label('detalles', 'Detalles del proyecto', ['for' => 'detalles'] ) !!}
-			<div class="input-group">
-				<div class="input-group-addon">
-					<span><i class="fa fa-building fa-lg" aria-hidden="true"></i></span>
-				</div>
-				<textarea rows="3" class="form-control" name="detalle">
+			<textarea rows="3" class="form-control" name="detalle">
 			</textarea>
-			</div>
 		</div>
 		<label id="label-terminos"><input type="radio" value="5" id="terminos">Al continuar acepta los <a href="{{ asset('uploads/docs/PoliticasDeProteccionDeDatos.pdf') }}"  target="_blank"> Terminos y condiciones.</a></label><br>
 
