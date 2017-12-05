@@ -30,7 +30,26 @@
 			<header>
 				<h1 hidden=>Edificapp</h1>
 					
+				<div class="container bar-sup">
+					<div class="col-xs-12 col-sm-4 col-md-6">
+						<a href="index.html">
+							<img src="{{ asset('img/logo-header.png') }}" alt="Logo Edificapp">
+						</a>				
+					</div>
 
+					<div class="col-xs-12 col-sm-8 col-md-6">
+						<ul>
+							<div class="dropdown">
+							  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><img class="img-circle" src="{{ Auth::user()->avatar }}" width="30"> Bienvenido {{ Auth::user()->name }}
+							  <span class="caret"></span></button>
+							  <ul class="dropdown-menu">
+							    <li><a href="/miCuenta"><i class="fa fa-user-circle" aria-hidden="true"></i> Editar mi Perfil </a></li>
+								<li><a href="/salir"><i class="fa fa-reply"></i> Salir</a></li>
+							  </ul>
+							</div>								
+						</ul>						
+					</div>					
+				</div> <!--container bar-sup-->	
 				<nav class="navbar" role="navigation" id="navbar" data-spy="affix" data-offset-top="500">
 					<div class="container-fluid navegacion">
 						<div class="container">
@@ -40,7 +59,6 @@
 			                        <i class="fa fa-bars fa-2x"></i>
 			                        
 			                    </button>
-								<i class="boton fa fa-caret-square-o-left fa-2x"></i>
 							</div><!--navbar-header-->									
 							
 							<div class="collapse navbar-collapse" id="collapse">
@@ -63,7 +81,7 @@
 			<div class="container-fluid" id="enlace">
 				<div class="container">
 					<div class="col-sm-6 col-md-6">
-						<p>¿QUIERES QUE TU PERFIL COMO PROFESIONAL SEA EL MAS VISTO?</p>
+						<p>¿QUIERES QUE TU PERFIL COMO ESPECIALISTA SEA EL MAS VISTO?</p>
 					</div>
 					<div class="col-sm-6 col-md-6">
 						<a href="membresia" class="btn btn-lg col-md-12" role="button">Conoce nuestros planes</a>
@@ -73,17 +91,11 @@
 			@include('alertas.errors')
 			@include('alertas.success')
 
-			<div class="barra-lateral cerrar">
+			<div class="barra-lateral">
 				<section>
 					<aside>
-						<div class="user-info">
-							<div>
-								<img class="img-circle" src="{{ Auth::user()->avatar }}" width="80">
-							</div>
-							<div class="container-info">
-								<p>{{ Auth::user()->name }}</p>
-								<p>{{ Auth::user()->email }}</p>
-							</div>
+						<div class="user-info text-center">
+							<i class="fa fa-caret-square-o-left fa-3x text-center botonCerrar" aria-hidden="true">Ocultar</i>
 						</div><!--user info-->
 						<nav class="navbar" role="navigation" id="navbar">
 							<div class="navegacion">
@@ -94,9 +106,8 @@
 									<div>
 										<ul class="nav">
 											<li><a href="/dashboard"><i class="fa fa-home fa-fw"></i>DashBoard</a></li>
-											<li><a href="/miCuenta">Mi Cuenta</a></li>
 										@if (Auth::user()->rol == "especialista")
-											<li><a href="/misEspecializaciones">Mis Especializaciones</a></li>
+											<li><a href="/misEspecializaciones">Mis Especialidades</a></li>
 											<li><a href="/misContratos">Mis Contratos</a></li>
 											<li><a href="/misCalificaciones">Mis Calificaciones</a></li>
 											<li><a href="/misProyectos">Mis Proyectos</a></li>
@@ -105,7 +116,6 @@
 										@endif
 											<li><a href="/misCotizaciones">Crea un proyecto</a></li>
 											<li><a href="/especialistas">Encuentra Especialistas</a></li>
-											<li><a href="/salir">Salir</a></li>
 										</ul>
 									</div> <!--collapse aside-->
 							</div><!--container navegacion aside-->
@@ -115,8 +125,9 @@
 				</section>
 			</div><!-- barra lateral-->
 			
-			<div class="contenido">				
-					@yield('content')	
+			<div class="contenido">	
+				<i class="boton fa fa fa-caret-square-o-right fa-3x cerrar"></i>
+					@yield('content')
 			</div><!--contenido-->
 
 		<!-- JQuery CDN-->
@@ -145,7 +156,32 @@
     	<script type="text/javascript">
     		$(document).ready(function()
     		{
-			    $('#tabla').DataTable();
+			    $('#tabla').DataTable({
+			    	"language": {
+					    "sProcessing":     "Procesando...",
+					    "sLengthMenu":     "Mostrar _MENU_ registros",
+					    "sZeroRecords":    "No se encontraron resultados",
+					    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+					    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+					    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+					    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+					    "sInfoPostFix":    "",
+					    "sSearch":         "Buscar:",
+					    "sUrl":            "",
+					    "sInfoThousands":  ",",
+					    "sLoadingRecords": "Cargando...",
+					    "oPaginate": {
+					        "sFirst":    "Primero",
+					        "sLast":     "Último",
+					        "sNext":     "Siguiente",
+					        "sPrevious": "Anterior"
+					    },
+					    "oAria": {
+					        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+					        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+					    }
+					}
+			    });
 			} );
     	</script>
 

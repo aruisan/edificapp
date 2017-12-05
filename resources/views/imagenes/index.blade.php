@@ -21,9 +21,9 @@
 				      <div class="row">
 
 				        <div class="col-xs-12 col-sm-7 col-md-8 col-lg-8 card-proyecto" >
-				        	<a href="" class="img-card-grande">
-				          		<img class="img-thumbnail img-responsive" src="{{ asset('uploads/'.$foto) }}" alt="imagen" width="100">
-				         	</a>
+				        	<a href="{{ url('/misProyectos/imagenes/create/'.$datos->id)}}" class="img-card-grande">
+				        		<img class="img-thumbnail img-responsive" src="{{ asset('uploads/'.$foto) }}" alt="imagen" width="100">
+				        	</a>
 				        </div>
 
 				        <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
@@ -39,7 +39,7 @@
 				      <!-- /.row -->
 
 				      <!-- Related Projects Row -->
-				      <h3 id="titulos">Imagenes del Proyecto <a href="{{ url('/misProyectos/imagenes/create/'.$datos->id)}}" class="btn btn-primary">Agregar Imagenes</a></h3>
+				      <h3 id="titulos">Imagenes del Proyecto</h3>
 
 				      <div class="row">
 				      @foreach($fotos as $photo)

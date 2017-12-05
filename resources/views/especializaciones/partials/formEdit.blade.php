@@ -21,11 +21,11 @@
 			</div>
 		</div><br>
 
-		<div class="form-group">
-			{!! Form::label('actividad', 'Seleccione la actividad a desempeñar', ['for' => 'actividad'] ) !!}
+		<div class="form-group col-md-3">
+			{!! Form::label('actividad', 'Fecha de Inicio de la Actividad', ['for' => 'actividad'] ) !!}
 			<div class="input-group">
 				<div class="input-group-addon">
-					<span><i class="fa fa-building fa-lg" aria-hidden="true"></i></span>
+					<span><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
 				</div>
 				{!! Form::date('tiempo', $datos->tiempo, ['class' => 'form-control']) !!} 
 			</div>

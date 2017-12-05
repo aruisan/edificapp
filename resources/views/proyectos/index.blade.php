@@ -36,7 +36,7 @@
                                   </a>
                                 </h4>
                                 <p class="">
-                                    {!! Str::words($data->descripcion, 35) !!}
+                                    {!! strip_tags(Str::words($data->descripcion, 35),'<img>') !!}
 
                                 </p>
                             </div>

@@ -1,7 +1,14 @@
 $(document).ready(function(){
 
 	$('.boton').on('click',function(){
-		$('.barra-lateral').toggleClass('cerrar');
+		$('.barra-lateral, .botonCerrar').show('slow');
+		$('.boton').addClass('cerrar');
+
+	});
+
+	$('.botonCerrar').on('click',function(){
+		$('.barra-lateral, .botonCerrar').hide('slow');
+		$('.boton').removeClass('cerrar');
 	});
 
 	$('#editar').on('click',function(){

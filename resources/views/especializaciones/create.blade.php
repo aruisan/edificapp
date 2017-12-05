@@ -14,7 +14,7 @@
 	       		<fieldset>
 		        	@include('especializaciones.partials.form')
 		     		<div class="form-group">
-		     			<input type="submit" value="Guardar" class="btn btn-primary">
+		     			<input type="submit" value="Guardar" class="btn btn-primary btn-block">
 					</div>
 				</fieldset>
 	    	{!! Form::close() !!}

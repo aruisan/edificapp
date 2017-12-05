@@ -6,7 +6,7 @@
 				  <li class="active">Mis Datos</li>
 				</ol>
 			<div class="formulario container col-sm-7 col-sm-offset-3 col-md-7 col-md-offset-3">
-					<form method="POST" action="editUser" class="sombra form">
+					<form method="POST" action="editUser" class="form">
 						<legend>
 							<h2 class="text-center">Información de la cuenta</h2>
 						</legend>

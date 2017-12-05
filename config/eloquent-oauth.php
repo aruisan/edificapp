@@ -4,10 +4,10 @@ return [
 	'table' => 'oauth_identities',
 	'providers' => [
 				'facebook' => [
-			'client_id' => '327083047701620',
-			//'client_id' => '117958835556307',
-			'client_secret' =>'be6973c1eaec2f9d29aca28196d3b1c2',
-			//'client_secret' =>'03dbe9adf632ceed9e195f10a3c66e4a',
+			//'client_id' => '1992326894341358',
+			'client_id' => '117958835556307',
+			//'client_secret' =>'e101b675e890888394d3ea753780b389',
+			'client_secret' =>'03dbe9adf632ceed9e195f10a3c66e4a',
 			'redirect_uri' => 'http://localhost:8000/login_facebook',
 			//'redirect_uri' => 'http://edificapp.com/login_facebook',
 			'scope' => [],

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Especializacion;
 
 
 use App\User;
@@ -20,7 +21,8 @@ class principalController extends Controller
      */
     public function index()
     {
-        return view('layouts/principal');
+    	$especializaciones = Especializacion::All();
+        return view('layouts/principal')->with('especializaciones', $especializaciones);
     }
 
     

@@ -11,9 +11,7 @@
 |
 */
 //rutas principales
-Route::get('/', function(){
-	return view('layouts/principal');
-});
+Route::get('/', 'PrincipalController@index');
 
 //rutas autenticacion
 //Route::get('registrar', 'Auth\AuthController@getRegister');

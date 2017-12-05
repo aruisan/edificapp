@@ -33,22 +33,32 @@
 					</div>
 
 					<div class="col-xs-12 col-sm-8 col-md-6">
-						<ul class="nav">
+						<ul class="nav menu-user">
 							<li>
 								<i class="fa fa-map-marker fa-2x fa-border" aria-hidden="true"></i>
 								<p>Ubicación <br><small><a href="">Todas</a></small></p>	
-								
 							</li>
+						@if(Auth::guest())
 							<li>
 								<i class="fa fa-vcard fa-2x fa-border" aria-hidden="true"></i>
 								<p>Registrese <br><small><a href="" data-toggle="modal" data-target="#registro" id="cliente" class="llamar_registro">Cliente</a> | <a href="" data-toggle="modal" data-target="#registro" id="especialista" class="llamar_registro">Especialista</a></small></p>	
-								
 							</li>
 							<li>
 								<i class="fa fa-user fa-2x fa-border" aria-hidden="true"></i>
 								<p>Ingresar <br><small><a href="" data-toggle="modal" data-target="#login">Login</a></small></p>	
-								
-							</li>									
+							</li>	
+							
+						@else()
+							<li class="dropdown">
+							  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><img class="img-circle" src="{{ Auth::user()->avatar }}" width="30"> Bienvenido {{ Auth::user()->name }} <span class="caret"></span>
+							</button>
+							  	<ul class="dropdown-menu">
+								    <li><a href="/miCuenta"><i class="fa fa-user-circle" aria-hidden="true"></i> Editar mi Perfil </a></li>
+									<li><a href="/salir"><i class="fa fa-reply"></i> Salir</a></li>
+								  </li>
+								</ul>
+							</li>		
+						@endif								
 						</ul>						
 					</div>					
 				</div> <!--container bar-sup-->				
@@ -112,16 +122,16 @@
 			<div class="container-fluid" id="enlace">
 				<div class="container">
 					<div class="col-sm-6 col-md-6">
-						<p>¿Quiere hacer realidad la casa de sus sueños?</p>
+						<p><h3><b>¿Quiere hacer realidad la casa de sus sueños?</b></h3></p>
 					</div>
 					<div class="col-sm-6 col-md-6">
-						<a href="misCotizaciones" class="btn btn-lg col-md-12" role="button">Solicitar Cotización</a>
+						<a href="misCotizaciones" class="btn btn-lg col-md-12" role="button">Solicitar Especialista</a>
 					</div>		
 				</div>
 			</div> <!--container enlace-->
 
 			<div class="container-fluid directorio" id="directorio">
-				<h2>DIRECTORIO DE PROFESIONALES</h2>
+				<h2>DIRECTORIO DE ESPECIALISTAS</h2>
 
 				<div class="col-sm-6 col-md-3">
 					<img src="{{ asset('img/arquitectos.jpg') }}">
@@ -143,6 +153,32 @@
 					<h4><a href="" class="az btn btn-lg btn-block">PINTORES</a></h4>
 				</div>
 			</div><!--container directorio-->
+
+			<div class="col-xs-1 col-sm-1 col-md-2 col-lg-2"></div>
+          	<div class="panel-group col-xs-10 col-sm-10 col-md-8 col-lg-8" id="accordion" role="tablist" aria-multiselectable="true">
+	            <div class="panel panel-default">
+	              <div class="panel-heading" role="tab" id="headingOne">
+	                <h4 class="panel-title">
+	                  <center>
+	                  	<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="btn btn-warning">
+	                   Ver Todas Las Especialidades
+	                  	</a>
+	                  </center>
+	                </h4>
+	              </div>
+	              <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+	                <div class="panel-body">
+	                  <p class="text-justify">
+	                    @foreach($especializaciones as $especializacion)
+	                    {!! '<em>('.$especializacion->nombre.'</em>) - ' !!}
+	                    @endforeach
+	                  </p> 
+	                </div>
+	              </div>
+	            </div>
+	        </div>
+
+
 
 			<section class="container">
 				<h2 class="text-center">Aliados</h2>
@@ -188,193 +224,15 @@
 						<h5>Ayuda</h5>
 					</div>
 					<div class="col-md-3">
-						<h5><a href="modal/modal.html" data-toggle="modal" data-target="#terminos">Términos y condiciones</a></h5>
+						<h5><a href="modal/modal.html" data-toggle="modal" data-target="#terminos">Legal</a></h5>
 						<p><a href="modal/modal.html" data-toggle="modal" data-target="#politica">Politica de Protección de Datos</a></p>
 						
 					</div>
 				</div><!-- container piepag-->	
 			</footer>
 
-			<!-- Modal Términos y Condiciones-->
-			<div class="modal fade" id="terminos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			  <div class="modal-dialog modal-lg">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			        <img src="{{ asset('img/logo-header.png') }}" alt="Logo Edificapp">
-			        <h4 class="modal-title" id="myModalLabel">Términos y condiciones</h4>
-			      </div>
-			      <div class="modal-body">
-			       <p>Este Sitio web es operado por Sicap SAS, con NIT 901.063.265-3 y Matrícula Mercantil: 980345-16 con domicilio en Calle 25 Norte No. 2BisN -09 de Cali (Valle del Cauca) y correo electrónico info@sicap.co, quien es el representante y propietario de la marca Edificapp. Las relaciones que se deriven de la prestación de los servicios contenidos en el Sitio web, están sometidas a la legislación y la jurisdicción Colombiana</p>
-
-					<b>Términos y Condiciones</b>
-					<p>Estos términos de servicio ("Términos", "Acuerdo") son un acuerdo entre Sicap SAS ("Sicap SAS ", "nosotros", "nos" o "nuestro") y usted ("el Usuario", "usted" o "su"). Este Acuerdo pone en adelante los términos generales y las condiciones de uso del sitio web http: //www.edificapp.com y cualquiera de sus productos o servicios (en conjunto, "Edificapp.com", "el Sitio web" o "Servicios").</p>
-
-					<b>Cuentas y Membresías</b>
-					<p>Usted debe tener al menos 18 años para usar este Sitio web. Ingresando y haciendo uso de Edificapp.com y estando de acuerdo a estos Términos, usted garantiza que tiene al menos 18 años de edad. Si usted crea una cuenta en Edificapp.com, usted es responsable de mantener la seguridad de su cuenta y es totalmente responsable de todas las actividades que ocurren bajo la cuenta y cualquier otra acción tomada en conexión con ello.</p>
-
-					<p>El suministro de información de contacto falsa, de cualquier clase, puede causar la eliminación de su cuenta. Usted debe notificarnos inmediatamente de cualquier uso no autorizado de su cuenta o cualquier otra violación de seguridad. No estaremos obligados por ningún acto u omisión de su parte, incluyendo daños y perjuicios de ninguna clase incurridos como consecuencia de tales actos u omisiones. Podemos suspender, deshabilitar, o suprimir su cuenta (o cualquier parte de la misma) si determinamos que usted ha violado cualquier disposición de este Acuerdo o que su conducta o el contenido de su cuenta, tenderían a dañar nuestra reputación y buena voluntad. Si eliminamos su cuenta por los motivos precedentes, no podrá registrarse de nuevo para nuestros Servicios. Podemos bloquear su dirección de correo electrónico y la dirección de protocolo de Internet para prevenir registros futuros.</p>
-
-					<b>Contenido de usuario</b>
-					<p>No somos dueños de ningún dato, información o material ("el Contenido") que usted suministra a Edificapp.com durante la utilización del Servicio. Usted tendrá la responsabilidad exclusiva de la precisión, la calidad, la integridad, la legalidad, la fiabilidad, y los derechos de propiedad intelectual o el derecho al uso de todo el Contenido presentado. Podemos, pero no tenemos ninguna obligación a supervisar el Contenido cargado en Edificapp.com o creado por usted utilizando nuestros Servicios. A no ser que expresamente usted nos lo permita, su uso de Edificapp.com no nos concede la licencia para usar, reproducir, adaptar, modificar, publicar o distribuir el Contenido creado por usted o almacenado en su cuenta de usuario para hacer mercadeo, comercializar o cualquier objetivo similar. Pero usted nos concede el permiso de tener acceso, copiar, distribuir, almacenar, transmitir, reformatear, mostrar y realizar el Contenido de su cuenta de usuario, únicamente como requerimiento para el objetivo de proporcionarle los Servicios. Sin limitar cualquiera de las representaciones o garantías, tenemos el derecho, aunque no la obligación, a, en nuestro juicio propio, rechazar o quitar cualquier Contenido que, en nuestra razonable opinión, viola cualquiera de nuestras políticas o es de cualquier modo dañino o desagradable.</p>
-
-					<b>Facturación y pagos</b>
-					<p>Usted pagará todos los derechos o cargos a su cuenta conforme a los honorarios, gastos, y términos de facturación vigentes en el momento en que se adeuda una cuenta o cargo. Si permite la renovación automática para los Servicios a los que usted se ha suscrito, el valor será cargado automáticamente conforme al término que usted seleccionó. Si a nuestro juicio, su compra constituye una transacción de alto riesgo, requeriremos una copia de su identificación con fotografía válida suministrada por el gobierno, y posiblemente una copia de un extracto de cuenta reciente para la tarjeta debito o crédito usada para la compra. Nos reservamos el derecho de cambiar nuestros servicios en cualquier momento.</p>
-
-					<b>Exactitud de información</b>
-					<p>Ocasionalmente puede haber información en nuestro sitio web que contenga errores tipográficos, inexactitudes u omisiones que pueden relacionarse con descripciones de servicios, precios, disponibilidad, promociones y ofertas. Nos reservamos el derecho de corregir en cualquier momento sin previo aviso cualquier error, inexactitud u omisión, y de cambiar o actualizar información o cancelar órdenes si cualquier información en el Sitio Web o en cualquier sitio web relacionado es inexacta (Incluso después de haber enviado su pedido). No asumimos ninguna obligación de actualizar, enmendar o aclarar información en el Sitio Web, incluyendo, sin limitación, información de precios, excepto según lo requerido por la ley. Ninguna actualización especificada o fecha de actualización aplicada en Edificapp.com debe ser tomada para indicar que toda la información en el Sitio Web o en cualquier sitio web relacionado ha sido modificado o actualizado.</p>
-
-					<b>Servicios de terceros</b>
-					<p>Si decide habilitar, acceder o utilizar servicios de terceros, se le informará que el acceso y uso de estos otros servicios se rige exclusivamente por los términos y condiciones de dichos servicios y no respaldamos, ni nos hacemos responsables de estos, y no hacemos representaciones de ningún aspecto de esos otros servicios, incluyendo, sin limitación, su contenido o la forma en que manejan los datos (incluyendo sus datos) o cualquier interacción entre usted y el proveedor de los otros servicios. Usted renuncia irrevocablemente a cualquier reclamación contra Sicap SAS con respecto a dichos otros servicios. Sicap SAS no es responsable de ningún daño o pérdida causada o supuestamente causada en relación con su habilitación, acceso o uso de estos servicios, o su dependencia de las prácticas de privacidad, los procesos de seguridad de datos u otras políticas de estos otros servicios. Es posible que se le solicite que se registre en otros servicios en sus respectivos sitios web. Al habilitar cualquier otro servicio, está autorizando expresamente a Sicap SAS a revelar sus datos según sea necesario para facilitar el uso o habilitación de dicho otro servicio.</p>
-
-					<b>Copias de Seguridad (Backups)</b>
-					<p>Realizamos copias de seguridad periódicas del Sitio Web y del Contenido y haremos todo lo posible para asegurar la integridad y exactitud de estas copias de seguridad. En caso de fallo de hardware o pérdida de datos, restauraremos automáticamente las copias de seguridad para minimizar el impacto y el tiempo de inactividad.</p>
-
-					<b>Enlaces a otros sitios web</b>
-					<p>Aunque este Edificapp.com puede tener enlaces a otros sitios web, no estamos directa o indirectamente, implicando ninguna aprobación, asociación, patrocinio, respaldo o afiliación con ningún sitio web enlazado, a menos que se establezca específicamente en este documento. No somos responsables de examinar o evaluar, y no garantizamos las ofertas de ninguna empresa o persona o el contenido de sus sitios web. No asumimos ninguna responsabilidad por los actos, productos, servicios y contenidos de terceros. Usted debe revisar cuidadosamente las declaraciones legales y otras condiciones de uso de cualquier sitio web al que acceda a través de un enlace desde este sitio web. Su vinculación a otras páginas fuera del sitio u otros sitios web es bajo su propio riesgo.</p>
-
-					<b>Publicidad</b>
-					<p>Durante el uso de Edificapp.com, puede entrar en contacto o participar en promociones de anunciantes o patrocinadores que muestren sus productos o servicios a través del sitio web. Cualquier actividad, y cualquier término, condiciones, garantías o representaciones asociadas con tal actividad, es únicamente entre usted y el tercero aplicable. No tendremos ninguna responsabilidad u obligación por tal contacto, compra o promoción entre usted y cualquier tercero.</p>
-
-					<b>Prohibiciones</b>
-					<p>Además de otros términos establecidos en el Acuerdo, está prohibido utilizar el Edificapp.com o su contenido: (a) para cualquier propósito ilícito; (b) solicitar a otros que realicen o participen en actos ilícitos; (c) violar cualquier regulación, reglamento, ley u ordenanza local, estatal o internacional; (d) infringir o violar nuestros derechos de propiedad intelectual o los derechos de propiedad intelectual de terceros; (e) acosar, abusar, insultar, dañar, difamar, calumniar, desacreditar, intimidar o discriminar por motivos de género, orientación sexual, religión, origen étnico, raza, edad, nacionalidad o discapacidad; (f) suministrar información falsa o engañosa; (g) cargar o transmitir virus o cualquier otro tipo de código malicioso que sea o pueda ser usado de cualquier manera que afecte la funcionalidad o operación del Servicio o de cualquier sitio web relacionado, otros sitios web o Internet; (h) recoger o rastrear la información personal de terceros; (i) hacer spam, phishing, pharming, web spider, web crawling o web scraping; (j) para cualquier propósito obsceno o inmoral; O (k) interferir o eludir las características de seguridad del Servicio o cualquier sitio web relacionado, otros sitios web o Internet. Nos reservamos el derecho de terminar la utilización del Servicio o de cualquier sitio web relacionado, por violar cualquiera de los usos prohibidos.</p>
-
-					<b>Derechos de propiedad intelectual</b>
-					<p>Este Acuerdo no transfiere de Sicap SAS a usted ninguna propiedad intelectual de Sicap SAS o de terceros, y todos los derechos, títulos e intereses sobre dichos bienes permanecerán (como entre las partes) exclusivamente con Sicap SAS. Todas las marcas registradas, marcas de servicio, gráficos y logotipos utilizados en conexión con Edificapp.com o sus Servicios, son marcas comerciales o marcas registradas de Sicap SAS. Otras marcas comerciales, marcas de servicio, gráficos y logotipos utilizados en conexión con nuestro Sitio Web o Servicios pueden ser marcas comerciales de terceros. El uso de Edificapp.com y sus Servicios no le otorga ningún derecho ni licencia para reproducir o utilizar de cualquier otra forma, las marcas comerciales de Sicap SAS o de terceros.</p>
-
-					<b>Limitación de responsabilidad</b>
-					<p>En la mayor medida permitida por la ley aplicable, en ningún caso Sicap SAS, sus afiliados, funcionarios, directores, empleados, agentes, proveedores o licenciatarios serán responsables ante cualquier persona por (a): cualquier cobertura indirecta, incidental, especial, punitiva o daños consecuentes (incluyendo, sin limitación, daños por lucro cesante, ingresos, ventas, fondo de comercio, uso o contenido, impacto en negocios, interrupción de negocios, pérdida de ahorros anticipados, pérdida de oportunidad de negocio) Incluyendo, sin limitación, contrato, responsabilidad extracontractual, garantía, incumplimiento de obligaciones legales, negligencia o de otro tipo, incluso si Sicap SAS ha sido informada de la posibilidad de tales daños o podría haber previsto tales daños. En la medida de lo permitido por la ley aplicable, la responsabilidad global de Sicap SAS y sus afiliados, funcionarios, empleados, agentes, proveedores y licenciatarios, relacionada con los servicios estará limitada a un monto mayor equivalente de mil pesos COP o cualquier cantidad efectivamente pagada en efectivo Por usted a Sicap SAS para el período anterior de un mes antes del primer evento o suceso que da lugar a dicha responsabilidad. Las limitaciones y exclusiones también se aplican si este recurso no le compensa totalmente por cualquier pérdida o falla de su propósito esencial.</p>
-
-					<b>Cambios y enmiendas</b>
-					<p>Nos reservamos el derecho de modificar en cualquier momento este Acuerdo o sus políticas relacionadas con el Sitio web o Servicios, efectiva tras la publicación de una versión actualizada de este Acuerdo en el sitio web. Cuando lo hagamos revisaremos la fecha actualizada al final de esta página. El uso continuado del Sitio Web después de cualquier cambio, constituirá su consentimiento para tales cambios.</p>
-
-					<b>Aceptación de estos términos</b>
-					<p>Usted reconoce que ha leído este Acuerdo y está de acuerdo con todos sus términos y condiciones. Al usar el Sitio Web o sus Servicios, usted acepta estar obligado por este Acuerdo. Si no acepta cumplir con los términos de este Acuerdo, no está autorizado para utilizar o acceder al Sitio Web y sus Servicios.</p>
-
-					<b>Contáctenos</b>
-					<p>Si tiene alguna pregunta sobre este Acuerdo, póngase en contacto con nosotros.</p>
-
-					<p>Este documento fue actualizado por última vez el 21 de Junio de 2017</p>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary">Save changes</button>
-			      </div>
-			    </div><!-- /.modal-content -->
-			  </div><!-- /.modal-dialog -->
-			</div><!-- /.modal -->
-
-
-		<!-- Modal Cliente-->
-		<div class="modal fade" id="registro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        <img src="{{ asset('img/logo-header.png') }}" alt="Logo Edificapp">
-		        <h4 class="modal-title titulo-modal myModalLabel"></h4>
-		      </div>
-		      <div class="modal-body">
-		      		<div>
-	      				<a href="/auth_facebook" id="btn-facebook" class="btn btn-lg btn-block" role="button"><i class="fa fa-facebook-official" aria-hidden="true"></i>Registrarse con Facebook</a>
-	      			</div>
-
-	      			<div>
-	      				<a href="auth_google" id="btn-google" class="btn btn-lg btn-block" role="button"><i class="fa fa-google-plus" aria-hidden="true"></i>Registrarse con Google</a>
-	      			</div>
-
-		      		<legend>
-			    		Crear una Cuenta
-			    	</legend>
-		      		<form action="/registrar" method="POST" class="sombra form">
-			      		<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			      		<input type="hidden" name="rol" id="rol">
-						<div class="form-group">
-							<div class="input-group">
-						      	<div class="input-group-addon">
-									<span><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></span>
-						      	</div>
-						      	<input class="form-control" type="email" name="email" placeholder="Email">
-							</div>
-							<small>Digite su correo electrónico</small>
-						</div>
-						
-						<div class="form-group">						
-							<div class="input-group">
-						      	<div class="input-group-addon">
-									<span><i class="fa fa-unlock-alt fa-lg" aria-hidden="true"></i></span>
-						      	</div>
-						      	<input id="pass" class="form-control" type="password" name="password" placeholder="password" required>					      	
-							</div>
-							<small>Digite su Contraseña</small>
-						</div>
-						<div class="form-group">						
-							<div class="input-group">
-						      	<div class="input-group-addon">
-									<span><i class="fa fa-unlock-alt fa-lg" aria-hidden="true"></i></span>
-						      	</div>
-						      	<input id="repass" class="form-control" type="password"  placeholder="re-password" required>					      	
-							</div>
-							<small>Repita la Contraseña</small>
-						</div>
-						<div class="resp_pass"></div>
-						<div class="form-group">
-				        		<input type="submit"  id="crear" class="btn crear" value="Crea Tu Cuenta">
-						</div>
-			      	</form>			       
-		      </div>
-		    </div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal Cliente-->
-
-		<!-- Modal Login-->
-		<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        <img src="{{ asset('img/logo-header.png') }}" alt="Logo Edificapp">
-		        <h4 class="modal-title text-primary myModalLabel">Ingresa a tu Cuenta</h4>
-		      </div>
-		      <div class="modal-body">
-		      		<div>
-	      				<a href="/auth_facebook" id="btn-facebook" class="btn btn-lg btn-block" role="button"><i class="fa fa-facebook-official" aria-hidden="true"></i>Iniciar Sesion con Facebook</a>
-	      			</div>
-
-	      			<div>
-	      				<a href="auth_google" id="btn-google" class="btn btn-lg btn-block" role="button"><i class="fa fa-google-plus" aria-hidden="true"></i>Iniciar Sesion con Google</a>
-	      			</div>
-	      			<legend>
-			    		Iniciar Sesion
-			    	</legend>
-		      		<form action="/login" method="POST" class="sombra form">
-		      			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-						<div class="form-group">
-							<div class="input-group">
-						      	<div class="input-group-addon">
-									<span><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></span>
-						      	</div>
-						      	<input class="form-control" type="email" name="email" placeholder="Email">
-							</div>
-							<small>Digite su correo electrónico</small>
-						</div>
-						
-						<div class="form-group">						
-							<div class="input-group">
-						      	<div class="input-group-addon">
-									<span><i class="fa fa-unlock-alt fa-lg" aria-hidden="true"></i></span>
-						      	</div>
-						      	<input class="form-control" type="password" name="password" placeholder="Contraseña" required>					      	
-							</div>
-							<small>Digite su Contraseña</small>
-						</div>
-						<input type="submit" class="btn" id="crear" value="Acceder">
-			      	</form>
-		      	
-		      </div>
-		    </div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal Login-->
+			@include('modals.juridica')
+			@include('modals.user')
 
 		<!-- JQuery CDN-->
 		{!!Html::script('https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js') !!}
