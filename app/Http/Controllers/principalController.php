@@ -21,8 +21,13 @@ class principalController extends Controller
      */
     public function index()
     {
-    	$especializaciones = Especializacion::All();
-        return view('layouts/principal')->with('especializaciones', $especializaciones);
+        return view('principal.index');
+    }
+
+      public function IndexBuscarEspecialidadesPublico()
+    {
+        $especialidades = Especializacion::paginate(4);
+        return view('principal/especialidades')->with('especialidades', $especialidades);
     }
 
     

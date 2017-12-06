@@ -138,6 +138,13 @@ class EspecializacionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function eliminar($id){
+        $borrar = UserActividad::find($id);
+        $borrar->delete();
+        Session::flash('message-error','se borro la Actividad con exito');
+        return redirect()->route('misEspecializaciones.index');
+    }
+
     public function destroy($id)
     {
         $borrar = UserActividad::find($id);

@@ -12,6 +12,10 @@
 */
 //rutas principales
 Route::get('/', 'PrincipalController@index');
+Route::get('especialidades/publica', [
+	'uses' => 'PrincipalController@IndexBuscarEspecialidadesPublico',
+	'as' => 'hjkhjkhjk'
+	]);
 
 //rutas autenticacion
 //Route::get('registrar', 'Auth\AuthController@getRegister');
@@ -55,7 +59,7 @@ Route::group(['middleware' => 'auth'], function(){
 	]);
 	Route::get('miCuenta', [
 			'uses' 	=> 'usuarioController@editarCuenta',
-			'as'	=>	'miCuenta'
+			'as'	=>	'Cuenta'
 	]);
 
 	Route::post('editUser', 'usuarioController@editUser');

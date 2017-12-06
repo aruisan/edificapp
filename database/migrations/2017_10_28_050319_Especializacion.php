@@ -16,6 +16,7 @@ class Especializacion extends Migration
         {
             $table->increments('id');
             $table->string('nombre', 80);
+            $table->string('ruta', 200);
             $table->timestamps();
         });
     }
